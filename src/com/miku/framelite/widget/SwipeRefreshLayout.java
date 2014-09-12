@@ -23,7 +23,6 @@ import android.graphics.Canvas;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -232,15 +231,11 @@ public class SwipeRefreshLayout extends ViewGroup {
 	}
 	
 	/**
-	 * 设置滑动模式，上拉或下拉
-	 * @param mode {@link #MODE_SWIPE_DOWN}:下拉模式，{@link #MODE_SWIPE_UP}上拉模式
+	 * 璁剧疆婊戝姩妯″紡锛屼笂鎷夋垨涓嬫媺
+	 * @param mode {@link #MODE_SWIPE_DOWN}:涓嬫媺妯″紡锛寋@link #MODE_SWIPE_UP}涓婃媺妯″紡
 	 */
 	public void setSwipeMode(int mode){
-		if(mode==MODE_SWIPE_DOWN){
-			mSwipeMode=MODE_SWIPE_DOWN;
-		}else{
-			mSwipeMode=MODE_SWIPE_UP;
-		}
+		mSwipeMode=mode==MODE_SWIPE_DOWN?MODE_SWIPE_DOWN:MODE_SWIPE_UP;
 	}
 	
 	public int getSwipeMode(){
@@ -422,7 +417,6 @@ public class SwipeRefreshLayout extends ViewGroup {
 								.getBottom() > absListView.getHeight()-absListView.getPaddingBottom());
 			} else if (mTarget instanceof ScrollView) {
 				final ScrollView scrollView = (ScrollView) mTarget;
-				Log.e("SwipeRefreshLayout","scrollView.getScrollY():"+scrollView.getScrollY());
 				return scrollView.getChildAt(0).getMeasuredHeight() > scrollView.getHeight() + scrollView.getScrollY();
 			} else {
 				throw new IllegalStateException("SwipeRefreshLayout swipe down can host child (AbsListView and scrollView)");
